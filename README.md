@@ -61,3 +61,14 @@ yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Deploy to Github Pages
+
+Build the application in github pages 
+```bash
+#generate 
+npm run generate
+
+#deploy
+npm run deploy
+```
