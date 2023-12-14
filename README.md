@@ -66,9 +66,9 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 Build the application in github pages 
 ```bash
-#generate 
+# generate 
 npm run generate
 
-#deploy
+# deploy
 npm run deploy
 ```
