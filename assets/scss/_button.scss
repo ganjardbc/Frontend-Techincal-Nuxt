@@ -1,0 +1,132 @@
+.btn-custom {
+    &__main {
+        background-color: $main !important;
+        border-color: $main !important;
+        // &:hover {
+        //     background-color: rgba($color: $main, $alpha: 1) !important;
+        //     border-color: rgba($color: $main, $alpha: 1) !important;
+        // }
+    }
+    &__sekunder {
+        background-color: rgba($color: #000, $alpha: 0) !important;
+        border-color: $border-color !important;
+        &:hover {
+            background-color: rgba($color: #000, $alpha: 0.1) !important;
+        }
+    }
+    &__green {
+        background-color: $green !important;
+        border-color: $green !important;
+        // &:hover {
+        //     background-color: rgba($color: $green, $alpha: 0.9) !important;
+        //     border-color: rgba($color: $green, $alpha: 0.9) !important;
+        // }
+    }
+    &__yellow {
+        background-color: $yellow !important;
+        border-color: $yellow !important;
+        // &:hover {
+        //     background-color: rgba($color: $yellow, $alpha: 0.9) !important;
+        //     border-color: rgba($color: $yellow, $alpha: 0.9) !important;
+        // }
+    }
+    &__orange {
+        background-color: $orange !important;
+        border-color: $orange !important;
+        // &:hover {
+        //     background-color: rgba($color: $orange, $alpha: 0.9) !important;
+        //     border-color: rgba($color: $orange, $alpha: 0.9) !important;
+        // }
+    }
+    &__blue {
+        background-color: $blue !important;
+        border-color: $blue !important;
+        // &:hover {
+        //     background-color: rgba($color: $blue, $alpha: 0.9) !important;
+        //     border-color: rgba($color: $blue, $alpha: 0.9) !important;
+        // }
+    }
+    &__purple {
+        background-color: $purple !important;
+        border-color: $purple !important;
+        // &:hover {
+        //     background-color: rgba($color: $purple, $alpha: 0.9) !important;
+        //     border-color: rgba($color: $purple, $alpha: 0.9) !important;
+        // }
+    }
+    &__transparent {
+        background-color: rgba($color: #000, $alpha: 0) !important;
+        &:hover {
+            background-color: rgba($color: #000, $alpha: 0.1) !important;
+        }
+    }
+    &__txt-white {
+        color: $white !important;
+    }
+    &__txt-black {
+        color: $black !important;
+    }
+    &__icon {
+        .center {
+            margin: auto;
+        }
+        .left {
+            margin-right: 8px;
+        }
+        .right {
+            margin-left: 8px;
+        }
+    }
+    &__align-center {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    &__align-left {
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }
+    &__align-right {
+        text-align: right !important;
+        justify-content: flex-end !important;
+    }
+    &__no-border {
+        border: 0 #fff solid !important;
+    }
+    &__no-radius {
+        border-radius: 0 !important;
+    }
+    &__radius {
+        border-radius: 5px !important;
+    }
+    &__small-circle {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    &__big-circle {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    &__active {
+        width: 68px !important;
+        height: 68px !important;
+    }
+    &__label-floating {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        left: 0;
+        top: -24px;
+    }
+    &__shadow-static {
+        &-active {
+            position: absolute;
+            top: 0;
+            left: -15px;
+            width: 68px !important;
+            height: 68px !important;
+            background-color: $dark-gray !important;
+            border-radius: 50%;
+            z-index: -1;
+        }
+    }
+}

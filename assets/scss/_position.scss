@@ -1,0 +1,21 @@
+.position {
+    &__fixed {
+        position: fixed !important;
+        z-index: 100 !important;
+    }
+    &__absolute {
+        position: absolute !important;
+    }
+    &__top-right {
+        top: 15px !important;
+        right: 15px !important;
+    }
+    &__bottom-right {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+    &__form-action-floating {
+        top: 0 !important;
+        right: -35px !important;
+    }
+}

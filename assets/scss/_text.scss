@@ -1,0 +1,48 @@
+.text-custom {
+    &__color {
+        &-main {
+            color: $main !important;
+        }
+        &-primary {
+            color: $primary !important;
+        }
+        &-tertiary {
+            color: $tertiary !important;
+        }
+        &-white {
+            color: $white !important;
+        }
+        &-black {
+            color: $black !important;
+        }
+        &-blue {
+            color: $blue !important;
+        }
+        &-red {
+            color: $red !important;
+        }
+        &-gray {
+            color: $gray !important;
+        }
+        &-orange {
+            color: $orange !important;
+        }
+        &-yellow {
+            color: $yellow !important;
+        }
+        &-green {
+            color: $green !important;
+        }
+    }
+    @for $i from 1 through 100 {
+        &__size-#{$i} {
+            font-size: #{$i}em !important;
+        }
+        &__size-#{$i}px {
+            font-size: #{$i}px !important;
+        }
+        &__size-#{$i}pt {
+            font-size: #{$i}pt !important;
+        }
+    }
+}

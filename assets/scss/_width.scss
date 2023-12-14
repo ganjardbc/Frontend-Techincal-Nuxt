@@ -1,0 +1,31 @@
+.w-custom {
+    &__full {
+        width: 100% !important;
+    }
+    @for $i from 1 through 1500 {
+        &__#{$i}px {
+            width: #{$i}px !important;
+        }
+    }
+    @for $i from 1 through 100 {
+        &__#{$i} {
+            width: #{$i}+'%' !important;
+        }
+    }
+}
+
+.h-custom {
+    &__full {
+        height: 100% !important;
+    }
+    @for $i from 1 through 1500 {
+        &__#{$i}px {
+            height: #{$i}px !important;
+        }
+    }
+    @for $i from 1 through 100 {
+        &__#{$i} {
+            height: #{$i}+'%' !important;
+        }
+    }
+}

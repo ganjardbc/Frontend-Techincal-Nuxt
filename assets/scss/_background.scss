@@ -1,0 +1,20 @@
+.bg-custom {
+    &__main {
+        background-color: $main !important;
+    }
+    &__blue {
+        background-color: $blue !important;
+    }
+    &__white {
+        background-color: $white !important;
+    }
+    &__grey {
+        background-color: $gray !important;
+    }
+    &__white-grey {
+        background-color: $white-gray !important;
+    }
+    &__dark-grey {
+        background-color: $dark-gray !important;
+    }
+}

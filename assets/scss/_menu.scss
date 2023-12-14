@@ -1,0 +1,190 @@
+.menu-sidebar {
+    position: relative;
+    width: 100%;
+    &__icon {
+        font-size: 14px;
+        height: 40px;
+        color: $black;
+    }
+    &__title {
+        font-size: 12px;
+        display: none;
+        color: $black;
+    }
+    &__container {
+        position: relative;
+        padding: 10px 0;
+        margin: 5px 0;
+        &:hover {
+            cursor: pointer;
+            transition: 0.2s;
+            background-color: $white-gray;
+            .menu-sidebar {
+                &__icon {
+                    color: $black;
+                }
+                &__title {
+                    color: $black;
+                }
+            }
+        }
+    }
+    .router-link-active {
+        background-color: $white-gray;
+        .menu-sidebar {
+            &__icon {
+                color: $main;
+            }
+            &__title {
+                color: $main;
+            }
+        }
+    }
+}
+
+.menu-sidebar-list {
+    position: relative;
+    width: 100%;
+    &__icon {
+        width: 30px;
+        font-size: 14px;
+        color: $black;
+    }
+    &__title {
+        width: calc(100% - 30px);
+        font-size: 12px;
+        color: $black;
+    }
+    &__container {
+        position: relative;
+        padding: 10px 15px;
+        margin: 5px 0;
+        &:hover {
+            cursor: pointer;
+            transition: 0.2s;
+            background-color: $white-gray;
+            .menu-sidebar {
+                &__icon {
+                    color: $black;
+                }
+                &__title {
+                    color: $black;
+                }
+            }
+        }
+    }
+    .router-link-active {
+        background-color: $white-gray;
+        .menu-sidebar {
+            &__icon {
+                color: $main;
+            }
+            &__title {
+                color: $main;
+            }
+        }
+    }
+}
+
+.menu-floating {
+    position: fixed;
+    z-index: 100;
+    bottom: 15px;
+    right: 34px;
+    .action-button {
+        z-index: 1;
+        transition: 0.3s;
+        animation-name: menu-floating-button-in;
+        animation-duration: 0.3s;
+    }
+    .menu-button {
+        position: absolute;
+        .btn-custom__label-floating {
+            display: none;
+        }
+    }
+    .menu-inbox {
+        right: 0;
+        transition: 0.4s;
+        animation-duration: 0.4s;
+    }
+    .menu-todo {
+        right: 0;
+        transition: 0.3s;
+        animation-duration: 0.3s;
+    }
+    &.show {
+        .action-button {
+            transition: 0.3s;
+            animation-name: menu-floating-button-out;
+            animation-duration: 0.3s;
+        }
+        .menu-button {
+            .btn-custom__label-floating {
+                display: block;
+            }
+        }
+        .menu-inbox {
+            right: 94px;
+            transition: 0.3s;
+            animation-duration: 0.3s;
+        }
+        .menu-todo {
+            right: 180px;
+            transition: 0.4s;
+            animation-duration: 0.4s;
+        }
+    }
+    &.path-active-inbox {
+        .action-button {
+            z-index: 0;
+            margin-right: 15px;
+            background-color: $dark-gray !important;
+            img {
+                display: none;
+            }
+        }
+        .menu-inbox {
+            right: 0;
+            z-index: 1;
+        }
+        .menu-todo {
+            right: 99px;
+        }
+    }
+    &.path-active-todo {
+        .action-button {
+            z-index: 0;
+            margin-right: 15px;
+            background-color: $dark-gray !important;
+            img {
+                display: none;
+            }
+        }
+        .menu-inbox {
+            right: 99px;
+        }
+        .menu-todo {
+            right: 0;
+            z-index: 1;
+        }
+    }
+}
+
+@keyframes menu-floating-button-in {
+    from {
+        transform: rotate(180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes menu-floating-button-out {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
