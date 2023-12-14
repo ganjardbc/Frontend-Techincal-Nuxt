@@ -65,8 +65,8 @@ import { defineComponent } from 'vue'
 export default defineComponent({
     data() {
         return {
-            pathMenu: 'inbox',
-            visbleMenuFloating: true,
+            pathMenu: '',
+            visbleMenuFloating: false,
         }
     },
     methods: {
