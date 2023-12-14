@@ -1,19 +1,25 @@
 <template>
     <div class="foundation__inbox-list">
         <div 
-            v-for="(item, i) in data" 
+            v-for="(item, i) in filteredData" 
             :key="i" 
-            :class="`foundation__card ${i + 1 < data.length && 'border-b'}`"
+            :class="`foundation__card ${i + 1 < filteredData.length && 'border-b'}`"
             @click="onClick(item)">
             <div class="flex">
                 <div class="foundation__card-avatar">
+                    <div v-if="item.isGroupChannel">
+                        <div 
+                            v-for="(user, j) in item.filteredUsers.slice(0, 2)" 
+                            :key="j" 
+                            :class="`foundation__avatar ${j + 1 === item.filteredUsers.length && 'blue'}`"
+                            :style="`left: ${j * 17}px`">
+                            <i class="far fa-lw fa-user"></i>
+                        </div>
+                    </div>
                     <div 
-                        v-for="(user, j) in item.users" 
-                        :key="j" 
-                        :class="`foundation__avatar ${j + 1 === item.users.length && 'blue'}`"
-                        :style="`left: ${j * 17}px`">
-                        <i v-if="item.isGroupChannel" class="far fa-lw fa-user"></i>
-                        <span v-else class="font-sans text-custom__color-white">{{ getFirstWord(item.title) }}</span>
+                        v-else
+                        class="foundation__avatar blue">
+                        <span class="font-sans text-custom__color-white">{{ getFirstWord(item.title) }}</span>
                     </div>
                 </div>
                 <div class="foundation__card-message">
@@ -46,6 +52,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+    computed: {
+        filteredData() {
+            return this.data && this.data.map((item) => {
+                const users = item.users.slice(0, 2)
+                return {
+                    ...item,
+                    filteredUsers: users,
+                }
+            })
+        }
+    },
     props: {
         data: {
             default: [],

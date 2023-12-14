@@ -36,15 +36,30 @@
                         popper-class="foundation-custom-popover">
                         <div class="w-full">
                             <div v-if="isOwner(item)" class="w-full">
-                                <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
-                                    <span class="font-sans text-custom__color-blue">Edit</span>
-                                </el-button>
+                                <div class="w-full">
+                                    <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
+                                        <span class="font-sans text-custom__color-blue">Edit</span>
+                                    </el-button>
+                                </div>
+                                <div class="w-full p-custom__b-4px m-custom__b-4px border-b"></div>
+                                <div class="w-full">
+                                    <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
+                                        <span class="font-sans text-custom__color-red">Delete</span>
+                                    </el-button>
+                                </div>
                             </div>
-                            <div v-if="isOwner(item)" class="w-full p-custom__b-4px m-custom__b-4px border-b"></div>
-                            <div class="w-full">
-                                <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
-                                    <span class="font-sans text-custom__color-red">Delete</span>
-                                </el-button>
+                            <div v-else class="w-full">
+                                <div class="w-full">
+                                    <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
+                                        <span class="font-sans text-custom__color-blue">Share</span>
+                                    </el-button>
+                                </div>
+                                <div class="w-full p-custom__b-4px m-custom__b-4px border-b"></div>
+                                <div class="w-full">
+                                    <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
+                                        <span class="font-sans text-custom__color-blue">Reply</span>
+                                    </el-button>
+                                </div>
                             </div>
                         </div>
                         <template #reference>
@@ -67,6 +82,10 @@ export default defineComponent({
             default: null,
             required: true,
         },
+        selected: {
+            default: null,
+            required: true,
+        },
         data: {
             default: [],
             required: true,
@@ -81,7 +100,9 @@ export default defineComponent({
         },
         isDateVisible(prevDate, curDate) {
             let status = true
-            if (prevDate.date !== curDate.date) {
+            let previousDate = prevDate && prevDate.date ? true : false
+            let currentDate = curDate && curDate.date ? true : false
+            if (previousDate === currentDate) {
                 status = false 
             }
             return status 
@@ -100,14 +121,22 @@ export default defineComponent({
                     font: '#43B78D',
                     background: '#D2F2EA'
                 }, 
+                {
+                    font: '#2F80ED',
+                    background: '#F8F8F8'
+                }
             ]
             if (this.isOwner(data)) {
                 return colors[0]
             } else {
-                if (data.status === 'read') {
-                    return colors[1]
+                if (this.selected.isGroupChannel) {
+                    if (data.status === 'read') {
+                        return colors[1]
+                    } else {
+                        return colors[2]
+                    }
                 } else {
-                    return colors[2]
+                    return colors[3]
                 }
             }
         }

@@ -2,10 +2,10 @@
     &__main {
         background-color: $main !important;
         border-color: $main !important;
-        // &:hover {
-        //     background-color: rgba($color: $main, $alpha: 1) !important;
-        //     border-color: rgba($color: $main, $alpha: 1) !important;
-        // }
+        &:hover {
+            background-color: rgba($color: $main, $alpha: 1) !important;
+            border-color: rgba($color: $main, $alpha: 1) !important;
+        }
     }
     &__sekunder {
         background-color: rgba($color: #000, $alpha: 0) !important;
@@ -17,42 +17,50 @@
     &__green {
         background-color: $green !important;
         border-color: $green !important;
-        // &:hover {
-        //     background-color: rgba($color: $green, $alpha: 0.9) !important;
-        //     border-color: rgba($color: $green, $alpha: 0.9) !important;
-        // }
+        &:hover {
+            background-color: rgba($color: $green, $alpha: 0.9) !important;
+            border-color: rgba($color: $green, $alpha: 0.9) !important;
+        }
     }
     &__yellow {
         background-color: $yellow !important;
         border-color: $yellow !important;
-        // &:hover {
-        //     background-color: rgba($color: $yellow, $alpha: 0.9) !important;
-        //     border-color: rgba($color: $yellow, $alpha: 0.9) !important;
-        // }
+        &:hover {
+            background-color: rgba($color: $yellow, $alpha: 0.9) !important;
+            border-color: rgba($color: $yellow, $alpha: 0.9) !important;
+        }
     }
     &__orange {
         background-color: $orange !important;
         border-color: $orange !important;
-        // &:hover {
-        //     background-color: rgba($color: $orange, $alpha: 0.9) !important;
-        //     border-color: rgba($color: $orange, $alpha: 0.9) !important;
-        // }
+        &:hover {
+            background-color: rgba($color: $orange, $alpha: 0.9) !important;
+            border-color: rgba($color: $orange, $alpha: 0.9) !important;
+        }
     }
     &__blue {
         background-color: $blue !important;
         border-color: $blue !important;
-        // &:hover {
-        //     background-color: rgba($color: $blue, $alpha: 0.9) !important;
-        //     border-color: rgba($color: $blue, $alpha: 0.9) !important;
-        // }
+        &:hover {
+            background-color: rgba($color: $blue, $alpha: 0.9) !important;
+            border-color: rgba($color: $blue, $alpha: 0.9) !important;
+        }
     }
     &__purple {
         background-color: $purple !important;
         border-color: $purple !important;
-        // &:hover {
-        //     background-color: rgba($color: $purple, $alpha: 0.9) !important;
-        //     border-color: rgba($color: $purple, $alpha: 0.9) !important;
-        // }
+        &:hover {
+            background-color: rgba($color: $purple, $alpha: 0.9) !important;
+            border-color: rgba($color: $purple, $alpha: 0.9) !important;
+        }
+    }
+    &__gray {
+        background-color: $white-gray !important;
+        border-color: $white-gray !important;
+        &:hover {
+            background-color: rgba($color: $white-gray, $alpha: 0.9) !important;
+            border-color: rgba($color: $white-gray, $alpha: 0.9) !important;
+        }
     }
     &__transparent {
         background-color: rgba($color: #000, $alpha: 0) !important;

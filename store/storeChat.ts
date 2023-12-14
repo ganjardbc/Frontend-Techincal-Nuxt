@@ -1,4 +1,5 @@
 import { defineStore } from "pinia"
+import { dummyChat } from "~/service/constant"
 
 const baseUrl = 'https://jsonplaceholder.typicode.com'
 
@@ -12,54 +13,6 @@ const defaultPayload = {
     userId: '',
 }
 
-const dummyPayload = [
-    {
-        id: '1',
-        body: 'No worries. It will be complited!',
-        date: '02/06/2021',
-        time: '19:32',
-        status: 'read',
-        userId: '1',
-        name: 'Phillips',
-    },
-    {
-        id: '2',
-        body: 'Hello Obaidullah, I will be your case advisor for case #029290. I have assigned some homework for you to fill. Please keep up with the due dates. Should you have any questions, you can message me anytime. Thanks.',
-        date: '03/06/2021',
-        time: '19:32',
-        status: 'read',
-        userId: '2',
-        name: 'Mary Hilda',
-    },
-    {
-        id: '3',
-        body: 'Please contact Mary for questions regarding the case bcs she will be managing your forms from now on! Thanks Mary.',
-        date: '03/06/2021',
-        time: '19:32',
-        status: 'read',
-        userId: '1',
-        name: 'Phillips',
-    },
-    {
-        id: '4',
-        body: 'Sure thing, Claren.',
-        date: '04/06/2021',
-        time: '19:32',
-        status: 'read',
-        userId: '2',
-        name: 'Mary Hilda',
-    },
-    {
-        id: '5',
-        body: 'Morning. I’ll try to do them. Thanks',
-        date: '04/06/2021',
-        time: '20:22',
-        status: 'unread',
-        userId: '3',
-        name: 'Obaidullah Amarkhil',
-    },
-]
-
 export const storeChat = defineStore('store-chat', {
     state: () => ({
         loading: false,
@@ -71,14 +24,14 @@ export const storeChat = defineStore('store-chat', {
         updateLoading() {
             this.loading = !this.loading 
         },
-        getInbox(postId = '') {
-            return $fetch(`${baseUrl}/posts/${postId}`)
+        getInbox(inboxId = '') {
+            return $fetch(`${baseUrl}/posts/${inboxId}`)
         },
-        getChat(postId = '') {
+        getChat(inboxId = '') {
             this.loading = true 
             this.newMessage = false
             this.chatList = []
-            $fetch(`${baseUrl}/comments?postId=${postId}`)
+            $fetch(`${baseUrl}/comments?postId=${inboxId}`)
                 .then((res) => {
                     // this.chatList = res && res.map((item) => {
                     //     const inbox = this.getInbox(item.postId)
@@ -90,19 +43,35 @@ export const storeChat = defineStore('store-chat', {
                     //         userId: inbox ? inbox.userId : '',
                     //     }
                     // })
-                    this.chatList = dummyPayload.map((item) => {
-                        return {
-                            ...item
-                        }
-                    })
-                    this.newMessage = true 
+                    const dummyPayload = dummyChat
+                        .filter((item) => item.inboxId === inboxId)
+                        .map((item) => {
+                            return item
+                        })
+                    if (dummyPayload && dummyPayload.length > 0) {
+                        this.chatList = dummyPayload
+                        this.newMessage = true 
+                    } else {
+                        this.newMessage = false 
+                    }
                 })
                 .finally(() => {
                     this.loading = false 
                 })
         },
         addChat(data = null) {
-            this.chatList.push(data)
+            const time = new Date().getTime()
+            const payload = {
+                id: time,
+                body: data.body,
+                date: '06/06/2021',
+                time: '20:55',
+                status: 'unread',
+                userId: '1',
+                name: 'Phillips',
+                inboxId: data.inboxId,
+            }
+            this.chatList.push(payload)
         },
         updateNewMessage(value = false) {
             this.newMessage = value

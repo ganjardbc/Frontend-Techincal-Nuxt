@@ -1,4 +1,5 @@
 import { defineStore } from "pinia"
+import { dummyInbox } from "~/service/constant"
 
 const baseUrl = 'https://jsonplaceholder.typicode.com'
 
@@ -13,65 +14,6 @@ const defaultPayload = {
     body: '',
     status: 'unread',
 }
-
-const dummyPayload = [
-    {
-        id: '1',
-        userId: '1',
-        userName: 'Phillips',
-        title: '1012312 - Test Channel',
-        date: '02/06/2021 10:45',
-        isGroupChannel: true,
-        users: [
-            {
-                userid: '1',
-                userName: 'Phillips',
-            },
-            {
-                userid: '2',
-                userName: 'Cameron',
-            },
-        ],
-        body: 'I understand your initial concerns and thats very valid, Elizabeth. But you understand your initial concerns and thats very valid.',
-        status: 'unread',
-    },
-    {
-        id: '2',
-        userId: '1',
-        userName: 'Cameron',
-        title: 'Jeannette Moraima Guaman Chamba (Hutto I-589) [ Hutto Follow Up - Brief Service ]',
-        date: '02/06/2021 10:45',
-        isGroupChannel: true,
-        users: [
-            {
-                userid: '1',
-                userName: 'Phillips',
-            },
-            {
-                userid: '2',
-                userName: 'Cameron',
-            },
-        ],
-        body: 'Hey, please read !',
-        status: 'unread',
-    },
-    {
-        id: '3',
-        userId: '1',
-        userName: 'FastVisa Support',
-        title: 'FastVisa Support',
-        date: '01/06/2021 12:19',
-        isGroupChannel: false,
-        users: [
-            {
-                userid: '3',
-                userName: 'FastVisa Support',
-            },
-        ],
-        body: 'Hey there! Welcome to your inbox.!',
-        status: 'read',
-    },
-]
 
 export const storeInbox = defineStore('store-inbox', {
     state: () => ({
@@ -98,10 +40,8 @@ export const storeInbox = defineStore('store-inbox', {
                     //         userName: ''
                     //     }
                     // })
-                    this.inboxList = dummyPayload.map((item) => {
-                        return {
-                            ...item
-                        }
+                    this.inboxList = dummyInbox.map((item) => {
+                        return item
                     })
                 })
                 .finally(() => {

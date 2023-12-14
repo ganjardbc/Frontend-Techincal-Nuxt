@@ -5,6 +5,7 @@
             @onClose="onClose"></foundation-inbox-chats-header>
         <foundation-inbox-chats-card 
             :id="userId" 
+            :selected="inboxSelected"
             :data="chatList"></foundation-inbox-chats-card>
         <foundation-inbox-chats-form></foundation-inbox-chats-form>
     </div>
@@ -34,7 +35,9 @@ export default defineComponent({
         }
     },
     mounted() {
-        this.getChat(this.inboxSelected && this.inboxSelected.id)
+        this.getChat(
+            this.inboxSelected && this.inboxSelected.id
+        )
     }
 })
 </script>
