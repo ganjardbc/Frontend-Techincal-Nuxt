@@ -17,7 +17,7 @@
                     size="large"
                     :disabled="!formChat"
                     @click="onSendChat">
-                    SEND
+                    {{ editMode ? 'EDIT' : 'SEND' }}
                 </el-button>
             </div>
         </div>
@@ -31,7 +31,22 @@ import { storeInbox, storeChat, storeUser } from '~/store'
 export default defineComponent({
     data () {
         return {
-            formChat: ''
+            formChat: '',
+            selected: null,
+            editMode: false,
+        }
+    },
+    props: {
+        selectedChat: {
+            default: null,
+            requireds: false,
+        }
+    },
+    watch: {
+        selectedChat(props) {
+            this.selected = props 
+            this.formChat = props.body
+            this.editMode = true
         }
     },
     computed: {
@@ -44,18 +59,42 @@ export default defineComponent({
         }
     },
     methods: {
-        ...mapActions(storeChat, ['updateNewMessage', 'addChat']),
+        ...mapActions(storeChat, [
+            'updateNewMessage', 
+            'addChat', 
+            'editChat',
+            'readAllChat'
+        ]),
+        scrollToBottomChatListArea() {
+            const element = document.getElementById('foundation-inbox-chats-list')
+            element.scrollTop = element.scrollHeight 
+        },
         onClickScrolldown() {
             this.updateNewMessage(!this.newMessage)
+            this.scrollToBottomChatListArea()
         },
         onSendChat() {
-            const payload = {
-                body: this.formChat,
-                userId: this.inboxSelected.userId,
-                inboxId: this.inboxSelected.id,
+            if (this.editMode) {
+                const payload = {
+                    body: this.formChat,
+                    userId: this.inboxSelected.userId,
+                    inboxId: this.inboxSelected.id,
+                    id: this.selected.id,
+                }
+                this.editChat(payload)
+            } else {
+                this.readAllChat()
+                const payload = {
+                    body: this.formChat,
+                    userId: this.inboxSelected.userId,
+                    inboxId: this.inboxSelected.id,
+                }
+                this.addChat(payload)
+                this.scrollToBottomChatListArea()
             }
-            this.addChat(payload)
             this.formChat = ''
+            this.selected = null 
+            this.editMode = false 
         }
     },
 })

@@ -71,6 +71,7 @@ export const dummyChat = [
         userId: '1',
         name: 'Phillips',
         inboxId: '1',
+        isEdited: false,
     },
     {
         id: '2',
@@ -81,6 +82,7 @@ export const dummyChat = [
         userId: '2',
         name: 'Mary Hilda',
         inboxId: '1',
+        isEdited: false,
     },
     {
         id: '3',
@@ -91,6 +93,7 @@ export const dummyChat = [
         userId: '1',
         name: 'Phillips',
         inboxId: '1',
+        isEdited: false,
     },
     {
         id: '4',
@@ -101,6 +104,7 @@ export const dummyChat = [
         userId: '2',
         name: 'Mary Hilda',
         inboxId: '1',
+        isEdited: false,
     },
     {
         id: '5',
@@ -111,6 +115,7 @@ export const dummyChat = [
         userId: '3',
         name: 'Obaidullah Amarkhil',
         inboxId: '1',
+        isEdited: false,
     },
     {
         id: '6',
@@ -121,6 +126,7 @@ export const dummyChat = [
         userId: '2',
         name: 'Mary Hilda',
         inboxId: '2',
+        isEdited: false,
     },
     {
         id: '7',
@@ -131,6 +137,7 @@ export const dummyChat = [
         userId: '1',
         name: 'Phillips',
         inboxId: '2',
+        isEdited: false,
     },
     {
         id: '8',
@@ -141,6 +148,7 @@ export const dummyChat = [
         userId: '2',
         name: 'Mary Hilda',
         inboxId: '2',
+        isEdited: false,
     },
     {
         id: '9',
@@ -151,6 +159,7 @@ export const dummyChat = [
         userId: '1',
         name: 'Phillips',
         inboxId: '2',
+        isEdited: false,
     },
     {
         id: '10',
@@ -161,6 +170,7 @@ export const dummyChat = [
         userId: '2',
         name: 'Mary Hilda',
         inboxId: '2',
+        isEdited: false,
     },
     {
         id: '11',
@@ -171,6 +181,7 @@ export const dummyChat = [
         userId: '4',
         name: 'FastVisa Support',
         inboxId: '3',
+        isEdited: false,
     },
     {
         id: '12',
@@ -181,6 +192,7 @@ export const dummyChat = [
         userId: '1',
         name: 'Phillips',
         inboxId: '3',
+        isEdited: false,
     },
     {
         id: '13',
@@ -191,6 +203,7 @@ export const dummyChat = [
         userId: '1',
         name: 'Phillips',
         inboxId: '3',
+        isEdited: false,
     },
     {
         id: '14',
@@ -201,5 +214,6 @@ export const dummyChat = [
         userId: '4',
         name: 'FastVisa Support',
         inboxId: '3',
+        isEdited: false,
     },
 ]

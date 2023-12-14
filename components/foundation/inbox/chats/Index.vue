@@ -6,8 +6,11 @@
         <foundation-inbox-chats-card 
             :id="userId" 
             :selected="inboxSelected"
-            :data="chatList"></foundation-inbox-chats-card>
-        <foundation-inbox-chats-form></foundation-inbox-chats-form>
+            :data="chatList"
+            @onEdit="onEdit"
+            @onDelete="onDelete"></foundation-inbox-chats-card>
+        <foundation-inbox-chats-form
+            :selectedChat="selectedChat"></foundation-inbox-chats-form>
     </div>
 </template>
 <script>
@@ -16,6 +19,11 @@ import { mapStores, mapState, mapActions } from 'pinia'
 import { storeInbox, storeChat, storeUser } from '~/store'
 
 export default defineComponent({
+    data () {
+        return {
+            selectedChat: null,
+        }
+    },
     computed: {
         ...mapStores(storeInbox, storeChat, storeUser),
         ...mapState(storeInbox, ['inboxSelected']),
@@ -26,12 +34,18 @@ export default defineComponent({
         }
     },
     methods: {
-        ...mapActions(storeChat, ['getChat']),
+        ...mapActions(storeChat, ['getChat', 'deleteChat']),
         onGoBack() {
             this.$emit('onGoBack')
         },
         onClose() {
             this.$emit('onClose')
+        },
+        onEdit(data) {
+            this.selectedChat = data 
+        },
+        onDelete(data) {
+            this.deleteChat(data.id)
         }
     },
     mounted() {

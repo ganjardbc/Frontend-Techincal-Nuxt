@@ -30,6 +30,7 @@ export const storeInbox = defineStore('store-inbox', {
             this.inboxList = []
             $fetch(`${baseUrl}/posts?userId=${userId}`)
                 .then((res) => {
+                    // HIDDEN TEMPORARY
                     // this.inboxList = res && res.map((item) => {
                     //     return {
                     //         ...item,

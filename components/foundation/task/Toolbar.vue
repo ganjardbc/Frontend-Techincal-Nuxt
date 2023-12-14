@@ -1,5 +1,5 @@
 <template>
-    <div class="foundation__toolbar p-custom__x-34px flex justify-between items-center">
+    <div class="foundation__toolbar p-custom__x-30px flex justify-between items-center">
         <el-select 
             v-model="form.myTask" 
             placeholder="My Tasks"
@@ -19,13 +19,6 @@
                 size="large"
                 @click="addTask">
                 <span class="font-sans text-custom__color-white">New Task</span>
-            </el-button>
-            <el-button 
-                class="btn-custom__transparent btn-custom__txt-black btn-custom__no-border m-custom__l-15px" 
-                circle
-                size="large"
-                @click="onClose">
-                <i class="fa fa-lg fa-times"></i>
             </el-button>
         </div>
     </div>
@@ -59,9 +52,6 @@ export default defineComponent({
         addNewTask() {
             this.addTask(this.user && this.user.id)
         },
-        onClose() {
-            this.$emit('onClose')
-        }
     }
 })
 </script>

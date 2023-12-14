@@ -68,7 +68,7 @@
             <div v-if="visibleCollapse" class="w-custom__90">
                 <div class="flex items-center p-custom__t-10px p-custom__b-10px">
                     <div class="w-custom__5">
-                        <i class="far fa-lw fa-clock text-custom__color-blue"></i>
+                        <i :class="`far fa-lw fa-clock ${data.checkedDate ? 'text-custom__color-blue' : 'text-custom__color-gray'}`"></i>
                     </div>
                     <div class="w-custom__95 flex">
                         <el-date-picker 
@@ -88,7 +88,7 @@
                 </div>
                 <div class="flex p-custom__b-10px">
                     <div class="w-custom__5">
-                        <i class="fa fa-lw fa-pencil-alt text-custom__color-blue"></i>
+                        <i :class="`fa fa-lw fa-pencil-alt ${data.description ? 'text-custom__color-blue' : 'text-custom__color-gray'}`"></i>
                     </div>
                     <div class="w-custom__95 flex">
                         <form-action-floating 

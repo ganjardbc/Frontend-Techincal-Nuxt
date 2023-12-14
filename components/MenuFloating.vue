@@ -1,6 +1,6 @@
 <template>
     <div>
-        <foundation-task v-if="pathMenu === 'task'" @onClose="onClose"></foundation-task>
+        <foundation-task v-if="pathMenu === 'task'"></foundation-task>
         <foundation-inbox v-if="pathMenu === 'inbox'" @onClose="onClose"></foundation-inbox>
         <div :class="`
             menu-floating 
@@ -74,8 +74,10 @@ export default defineComponent({
             this.pathMenu = value 
         },
         openMenuFloating() {
-            if (this.pathMenu === '') {
-                this.visbleMenuFloating = !this.visbleMenuFloating
+            if (this.visbleMenuFloating) {
+                this.onClose()
+            } else {
+                this.visbleMenuFloating = true
             }
         },
         onClose() {

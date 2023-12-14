@@ -15,6 +15,7 @@ const defaultPayload = {
 
 export const storeChat = defineStore('store-chat', {
     state: () => ({
+        formChat: '',
         loading: false,
         newMessage: false,
         chatList: [],
@@ -33,6 +34,7 @@ export const storeChat = defineStore('store-chat', {
             this.chatList = []
             $fetch(`${baseUrl}/comments?postId=${inboxId}`)
                 .then((res) => {
+                    // HIDDEN TEMPORARY
                     // this.chatList = res && res.map((item) => {
                     //     const inbox = this.getInbox(item.postId)
                     //     return {
@@ -70,8 +72,32 @@ export const storeChat = defineStore('store-chat', {
                 userId: '1',
                 name: 'Phillips',
                 inboxId: data.inboxId,
+                isEdited: false,
             }
             this.chatList.push(payload)
+            this.newMessage = true 
+        },
+        deleteChat(id = '') {
+            const index = this.chatList.findIndex((item) => item.id == id)
+            if (index !== -1) {
+                this.chatList.splice(index, 1)
+            }
+        },
+        editChat(data = null) {
+            const find = this.chatList.find((item) => item.id == data.id)
+            if (find !== undefined) {
+                find.body = data.body
+                find.isEdited = true 
+            }
+        },
+        readAllChat() {
+            const payload = this.chatList.map((item) => {
+                return {
+                    ...item,
+                    status: 'read',
+                }
+            })
+            this.chatList = payload
         },
         updateNewMessage(value = false) {
             this.newMessage = value

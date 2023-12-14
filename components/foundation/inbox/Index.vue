@@ -2,8 +2,7 @@
     <div class="foundation foundation__position-initial bg-custom__white rounded-md shadow-md">
         <foundation-inbox-list
             v-if="visible === 'list'"
-            @onInbox="onInbox"
-            @onClose="onCloseList"></foundation-inbox-list>
+            @onInbox="onInbox"></foundation-inbox-list>
         <foundation-inbox-chats
             v-if="visible === 'chat'"
             @onGoBack="onGoBack"

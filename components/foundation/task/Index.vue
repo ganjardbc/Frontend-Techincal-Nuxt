@@ -1,6 +1,6 @@
 <template>
     <div class="foundation foundation__position-initial bg-custom__white rounded-md shadow-md">
-        <foundation-task-toolbar @onClose="onClose"></foundation-task-toolbar>
+        <foundation-task-toolbar></foundation-task-toolbar>
         <foundation-task-loading v-if="loading"></foundation-task-loading>
         <foundation-task-list v-if="taskList"></foundation-task-list>
     </div>
@@ -18,9 +18,6 @@ export default defineComponent({
     },
     methods: {
         ...mapActions(storeTask, ['getTask']),
-        onClose() {
-            this.$emit('onClose')
-        },
     },
     mounted() {
         this.getTask(this.user && this.user.id) 

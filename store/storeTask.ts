@@ -43,7 +43,7 @@ export const storeTask = defineStore('store-task', {
             this.taskList.push(payload)
         },
         deleteTask(id = '') {
-            var index = this.taskList.findIndex((item) => item.id == id)
+            const index = this.taskList.findIndex((item) => item.id == id)
             if (index !== -1) {
                 this.taskList.splice(index, 1)
             }

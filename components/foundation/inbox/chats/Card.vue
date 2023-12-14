@@ -1,5 +1,5 @@
 <template>
-    <div class="foundation__chat-list flex flex-col">
+    <div id="foundation-inbox-chats-list" class="foundation__chat-list flex flex-col">
         <div v-for="(item, i) in data" :key="i">
             <div 
                 v-if="isNewMessage(item)" 
@@ -27,7 +27,13 @@
                 <div :class="`m-custom__t-4px flex ${isOwner(item) ? 'flex-row-reverse justify-start' : 'flex-row justify-start'}`">
                     <div class="message" :style="`background-color: ${getColor(item).background};`">
                         <div class="font-sans text-custom__color-gray text-custom__size-14px">{{ item.body }}</div>
-                        <div class="font-sans text-custom__color-gray text-custom__size-14px m-custom__t-8px">{{ item.time }}</div>
+                        <div class="flex items-center m-custom__t-8px font-sans text-custom__color-gray text-custom__size-14px">
+                            <div>{{ item.time }}</div>
+                            <div v-if="item.isEdited" class="m-custom__x-5px">
+                                <i class="fa fa-lw fa-circle text-custom__size-3px"></i>
+                            </div>
+                            <div v-if="item.isEdited">Edited</div>
+                        </div>
                     </div>
                     <el-popover
                         placement="bottom-start"
@@ -37,13 +43,17 @@
                         <div class="w-full">
                             <div v-if="isOwner(item)" class="w-full">
                                 <div class="w-full">
-                                    <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
+                                    <el-button 
+                                        class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full"
+                                        @click="onEdit(item)">
                                         <span class="font-sans text-custom__color-blue">Edit</span>
                                     </el-button>
                                 </div>
                                 <div class="w-full p-custom__b-4px m-custom__b-4px border-b"></div>
                                 <div class="w-full">
-                                    <el-button class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full">
+                                    <el-button 
+                                        class="btn-custom__transparent btn-custom__no-border btn-custom__align-left btn-custom__no-radius w-full"
+                                        @click="onDelete(item)">
                                         <span class="font-sans text-custom__color-red">Delete</span>
                                     </el-button>
                                 </div>
@@ -92,6 +102,12 @@ export default defineComponent({
         }
     },
     methods: {
+        onEdit(data) {
+            this.$emit('onEdit', data)
+        },
+        onDelete(data) {
+            this.$emit('onDelete', data)
+        },
         isOwner(data) {
             return this.id === parseInt(data.userId) ? true : false 
         },

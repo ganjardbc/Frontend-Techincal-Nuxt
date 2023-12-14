@@ -1,6 +1,6 @@
 <template>
     <div class="foundation__container">
-        <foundation-inbox-list-search @onChange="onChange" @onClose="onClose"></foundation-inbox-list-search>
+        <foundation-inbox-list-search @onChange="onChange"></foundation-inbox-list-search>
         <foundation-inbox-list-card v-if="!loading" :data="inboxList" @onClick="onClick"></foundation-inbox-list-card>
         <foundation-inbox-list-loading v-if="loading"></foundation-inbox-list-loading>
     </div>
@@ -25,9 +25,6 @@ export default defineComponent({
         onChange (value) {
             console.log('onChange', value)
         },
-        onClose () {
-            this.$emit('onClose')
-        }
     },
     mounted() {
         this.getInbox(this.user && this.user.id) 

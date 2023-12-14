@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    baseURL: '/Frontend-Techincal-Nuxt/',
-    buildAssetsDir: 'assets',
+    baseURL: process.env.NODE_ENV === 'production' ? '/Frontend-Techincal-Nuxt/' : '',
+    buildAssetsDir: process.env.NODE_ENV === 'production' ? 'assets' : '',
   },
   devServer: {
     port: 4000,
